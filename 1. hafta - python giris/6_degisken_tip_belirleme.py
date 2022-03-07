@@ -1,4 +1,8 @@
 a = 5
+print(a*"4")
+a = "5"
+print(a+"4")
+a = 5
 print(a)
 a = int(5)
 print(a+2)

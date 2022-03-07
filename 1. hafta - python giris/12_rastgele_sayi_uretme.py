@@ -1,6 +1,6 @@
-import random
+from random import randrange
 
-print(random.randrange(1, 10))
+print(randrange(1, 10))
 
-x = random.randrange(10, 100)
+x = randrange(10, 100)
 print(x)

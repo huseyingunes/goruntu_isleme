@@ -1,9 +1,9 @@
 x = "efsane"
 
 def myfunc():
-  global x
+  #global x
   x = "cok iyi"
 
 myfunc()
 
-print("Python " + x)
+print("Python", x)

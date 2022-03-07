@@ -4,3 +4,6 @@ for i in range(10):
 liste = ["elma", "armut", "kivi", 23, ["a", "b"]]
 for i in liste:
     print(i)
+
+for i in liste[4]:
+    print(i)

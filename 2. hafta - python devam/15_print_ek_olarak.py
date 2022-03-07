@@ -3,6 +3,7 @@ print("mühendisliği")
 a = "sayar"
 b = "mühendisliği"
 
+print("bilgi", a, " ", b)
 print("bilgi", a, " ", b, sep="")
 
 print("bilgisayar", end=" ")

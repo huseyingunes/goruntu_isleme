@@ -1,4 +1,4 @@
-a=5
+a =                             5
 b=5.5
 c = "metin"
 d = True
@@ -10,7 +10,7 @@ print(c)
 print(d)
 print(e)
 
-print("a nın değeri :", a)
+print("a nın değeri :", a,b,c,d,e, sep="*", end="|")
 print("b nın değeri :", b)
 print("c nın değeri :", c)
 print("d nın değeri :", d)

@@ -10,5 +10,3 @@ a = 5
 b = 5
 
 print("a ile b farkli") if a != b else print("a ile b ayni")
-
-

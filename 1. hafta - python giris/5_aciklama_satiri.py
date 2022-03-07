@@ -13,5 +13,5 @@ açıklama
     satırlık
 açıklama
 """
-print("Açıklama satırı")
+print("Açıklama satırı")  # Burası açıklama
 

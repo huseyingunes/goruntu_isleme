@@ -1,6 +1,8 @@
 liste = ["Elma", "Armut", "Ayva"]
 print(liste)
 
+print(liste[0][1:3])
+
 print(liste[1])
 
 print(len(liste))
