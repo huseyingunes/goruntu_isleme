@@ -3,4 +3,4 @@ class Deneme:
 
 
 nesne = Deneme()
-
+print(nesne.a)

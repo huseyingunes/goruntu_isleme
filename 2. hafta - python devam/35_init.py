@@ -6,4 +6,8 @@ class Deneme:
 
 
 nesne = Deneme()
+print(Deneme.a)
+nesne.a = 15
+print(Deneme.a)
+print(nesne.a)
 

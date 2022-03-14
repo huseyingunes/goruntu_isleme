@@ -6,4 +6,4 @@ def ussunu_al(sayi, us_degeri=2):
 
 
 print("2 üzeri 2 :", ussunu_al(2))
-print("2 üzeri 3 :", ussunu_al(2, 3))
+print("2 üzeri 8 :", ussunu_al(2, 8))

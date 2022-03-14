@@ -4,4 +4,4 @@ def birim_islem(**birim):
     print(a, ":", b)
 
 
-birim_islem(ad="Balıkesir", tip="Üniversite")
+birim_islem(ad="Balıkesir", tip="Üniversite", yil=1992, renk="yeşil")

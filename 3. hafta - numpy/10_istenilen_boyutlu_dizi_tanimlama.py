@@ -1,6 +1,6 @@
 import numpy as np
 
-dizi = np.array([1, 2], ndmin=10)
+dizi = np.array([1, 2], ndmin=32)
 print(dizi)
 print("Dizinin boyutu:", dizi.ndim)
 
