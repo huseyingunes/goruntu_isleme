@@ -7,10 +7,10 @@ out = cv.VideoWriter("video/kayit.avi", fourcc, 20.0, (640, 480), 0)
 
 while(video.isOpened()):
     ret, frame = video.read()
-    nisangah = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    #print(nisangah.shape)
-    #print(nisangah[0, 0])
     if ret:
+        nisangah = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        # print(nisangah.shape)
+        # print(nisangah[0, 0])
         nisangah[239, :] = 0
         nisangah[240, :] = 0
         nisangah[241, :] = 0

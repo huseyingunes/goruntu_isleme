@@ -14,7 +14,7 @@ for i in range(0, 255):
     dizi[:, i] = i
 
 print(dizi)
-
+#cv.imwrite("resim/siyahbeyaz.jpg", dizi)
 cv.imshow("1", dizi)
 cv.waitKey(0)
 
