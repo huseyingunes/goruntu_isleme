@@ -15,3 +15,21 @@ açıklama
 """
 print("Açıklama satırı")  # Burası açıklama
 
+# aşağıda durum farklı gözden kaçırma
+z = """asdf
+asdf
+asdf
+asdf
+"""
+
+print(z)
+
+z = '''
+asdf
+asdf
+asdf
+asdf
+'''
+
+print(z)
+

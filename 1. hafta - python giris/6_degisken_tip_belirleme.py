@@ -10,5 +10,4 @@ a = float(5)
 print(a)
 a = str(5)
 print(a+"asdf")
-c = None
-print(type(c))
+
