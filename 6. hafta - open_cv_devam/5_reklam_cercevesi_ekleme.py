@@ -3,7 +3,7 @@ import cv2 as cv
 video = cv.VideoCapture(0)
 
 fourcc = cv.VideoWriter_fourcc(*'XVID')
-out = cv.VideoWriter("video/kayit2.avi", fourcc, 20.0, (640, 480))
+out = cv.VideoWriter("video/kayit.avi", fourcc, 20.0, (640, 480))
 
 resim = cv.imread("resim/ad_soyad.jpg")
 

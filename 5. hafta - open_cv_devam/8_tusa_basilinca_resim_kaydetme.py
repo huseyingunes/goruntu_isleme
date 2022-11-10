@@ -14,10 +14,3 @@ uretilmis_resim = cv.imread("resim/uretilmis.jpg")
 cv.imshow("1", uretilmis_resim)
 if cv.waitKey(0) == ord('j'):
     cv.imwrite("resim/uretilmis_tusla.jpg", dizi)
-
-
-
-
-
-
-

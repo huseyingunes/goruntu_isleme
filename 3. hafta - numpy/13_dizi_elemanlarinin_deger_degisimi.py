@@ -13,7 +13,3 @@ print("a dizisinin tek elemanı :", a)
 print("b dizisinin 2. elemanı:", b[1])
 print("c dizisinin 2. elemanının 1. elemanı :", c[1, 0])
 print("d dizisinin 2. elemanının 1. elemanının 3. elemanı :", d[1, 0, 2])
-
-c[0] = [100, 200]
-print("c dizisinin 2. elemanının 1. elemanı :", c[0])
-print("c dizisinin 2. elemanının 1. elemanı :", c[0, 1])

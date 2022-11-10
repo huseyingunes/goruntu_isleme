@@ -2,6 +2,7 @@
 Siyahtan beyaza 256*256 piksellik bir resim oluşturun
 ve opencv imshow ile gösterin
 '''
+
 import cv2 as cv
 import numpy as np
 
@@ -14,7 +15,7 @@ for i in range(0, 255):
     dizi[:, i] = i
 
 print(dizi)
-#cv.imwrite("resim/siyahbeyaz.jpg", dizi)
+
 cv.imshow("1", dizi)
 cv.waitKey(0)
 
