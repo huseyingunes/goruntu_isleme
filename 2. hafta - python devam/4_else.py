@@ -1,4 +1,4 @@
-a = 9
+a = 5
 if (a==5):
     print("a 5 e eşit")
 elif a<5:
