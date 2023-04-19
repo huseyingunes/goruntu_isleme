@@ -10,4 +10,3 @@ cv.imshow("a", yol)
 cv.waitKey(0)
 
 cv.imwrite("resim/kirpilmis_manzara.jpg", yol)
-

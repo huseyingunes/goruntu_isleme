@@ -8,4 +8,3 @@ while(video.isOpened()):
         cv.imshow("kamera", frame)
         if cv.waitKey(33) == ord('q'):
             break
-

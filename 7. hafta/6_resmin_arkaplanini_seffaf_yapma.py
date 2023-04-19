@@ -14,7 +14,7 @@ quit()
 
 for x in range(0, 480):
     for y in range(0, 640):
-        if (resim_gri[x, y] >= 200):
+        if (resim_gri[x, y] >= 150):
             seffaf[x, y, 3] = 0
 
 

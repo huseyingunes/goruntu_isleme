@@ -10,4 +10,13 @@ print(resim[0, 0])
 cv.imshow("a", resim)
 cv.waitKey(0)
 
-cv.imwrite("resim/ad_syad,_benekli.jpg", resim)
+cv.imwrite("resim/ad_soyad_benekli.jpg", resim)
+
+resim[10:50, 10:50] = [0, 0, 0]
+
+print(resim[0, 0])
+
+cv.imshow("a", resim)
+cv.waitKey(0)
+
+cv.imwrite("resim/ad_soyad_benekli_2.jpg", resim)

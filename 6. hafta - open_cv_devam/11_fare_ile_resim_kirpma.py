@@ -13,8 +13,8 @@ def fare_tiklama_olayi(event, x, y, flags, param):
         print("bırakıldı :", x, "-", y)
         cv.imwrite("resim/kirpilmis_manzara_fare_ile.jpg", resim[bas_y:y, bas_x:x])
         cv.imshow("Kirpilmis Resim", resim[bas_y:y, bas_x:x])
-        #time.sleep(2)
-        cv.destroyWindow("Kirpilmis Resim")
+        #cv.waitKey(0)
+        #cv.destroyWindow("Kirpilmis Resim")
 
 resim = cv.imread("resim/manzara.jpg")
 
