@@ -27,7 +27,7 @@ def cizgi_ciz(event, x, y, flags, param):
 
     if event == cv.EVENT_LBUTTONUP:
         fare_tiklatildi = False
-
+        temiz_resim = resim.copy()
 
 
 

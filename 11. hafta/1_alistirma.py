@@ -1,5 +1,5 @@
 '''
-Resim üzerinde fare ile tıklatılan yere yuvarlak, dikdörtgen ya da rastgele boyutlarda elips çizen program.
+Resim üzerinde fare ile tıklanılan yere yuvarlak, dikdörtgen ya da rastgele boyutlarda elips çizen program.
 '''
 import cv2 as cv
 from random import *
@@ -9,14 +9,18 @@ yukseklik = resim.shape[0]
 genislik = resim.shape[1]
 
 def rastgele_sekil_ciz(event, x, y, flags, param):
-    if event == cv.EVENT_LBUTTONDOWN:
+    if event == cv.EVENT_LBUTTONDOWN or event == cv.EVENT_RBUTTONDOWN:
         rastgele_islem = randint(1, 3)
         if rastgele_islem == 1:  # rastgele dikdörtgen çiz
             rastgele_uzunluk = randint(x, genislik)
-            rastgele_yukseklik = randint(x, yukseklik)
-            cv.rectangle(resim, (x, y), (rastgele_uzunluk, rastgele_yukseklik), (255, 100, 50), 10, lineType=cv.LINE_AA)
+            yarisi_x = int((rastgele_uzunluk - x) / 2)
+            rastgele_yukseklik = randint(y, yukseklik)
+            yarisi_y = int((rastgele_yukseklik - y) / 2)
+            cv.rectangle(resim, (x-yarisi_x, y - yarisi_y),
+                         (rastgele_uzunluk - yarisi_x, rastgele_yukseklik - yarisi_y),
+                         (255, 100, 50), 10, lineType=cv.LINE_AA)
         elif rastgele_islem == 2:  # rastgele çember çiz
-            kisa_mesafe = min(x, y, genislik-x, yukseklik-y)
+            kisa_mesafe = min(x, y, genislik - x, yukseklik - y)
             yaricap = randint(0, kisa_mesafe)
             cv.circle(resim, (x, y), yaricap, (20, 100, 50), 10, lineType=cv.LINE_AA)
         elif rastgele_islem == 3:  # rastgele elips çiz
