@@ -1,8 +1,8 @@
 import cv2 as cv
 
-resim = cv.imread("resim/larva.jpg", cv.IMREAD_GRAYSCALE)
+resim = cv.imread("resim/larva_keskinlestirilmis.png", cv.IMREAD_GRAYSCALE)
 
-yuvarlaklar = cv.HoughCircles(resim, cv.HOUGH_GRADIENT, 1, 1, param1=60, param2=20, minRadius=95, maxRadius=108)
+yuvarlaklar = cv.HoughCircles(resim, cv.HOUGH_GRADIENT, 1, 150, param1=70, param2=5, minRadius=98, maxRadius=102)
 renkli = cv.imread("resim/larva.jpg")
 
 for cember in yuvarlaklar[0]:

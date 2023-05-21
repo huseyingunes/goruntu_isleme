@@ -6,9 +6,7 @@ yuvarlaklar = cv.HoughCircles(resim, cv.HOUGH_GRADIENT, 1, 1, param1=100, param2
 renkli = cv.imread("resim/ronaldo_2.jpg")
 
 for cember in yuvarlaklar[0]:
-    cv.circle(renkli, (cember[0], cember[1]), int(cember[2]), (255, 0, 0), 1)
+    cv.circle(renkli, (int(cember[0]), int(cember[1])), int(cember[2]), (255, 0, 0), 1)
 
 cv.imshow("a", renkli)
 cv.waitKey(0)
-
-
