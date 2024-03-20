@@ -8,6 +8,7 @@ ESC tuşuna basıldığında video gösterimini sonlandıran
 bir betik yazınız.
 '''
 
+
 import cv2 as cv
 import numpy as np
 
@@ -20,10 +21,16 @@ while (video.isOpened()):
     ret, frame = video.read()
     # gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     print(ret)
-    frame2 = np.zeros((360, 640, 3), dtype="uint8")
     #print(frame.shape)
-    for i in range(0, 640):
-        frame2[:, i] = frame[:, 639-i]
+
+    ## Çözüm 1
+    #frame2 = np.zeros((360, 640, 3), dtype="uint8")
+    #for i in range(0, 640):
+    #    frame2[:, i] = frame[:, 639-i]
+
+    ## Çözüm 2
+    frame2 = frame[:, ::-1]
+
     #quit()
     if ret:
         cv.imshow("video", frame2)

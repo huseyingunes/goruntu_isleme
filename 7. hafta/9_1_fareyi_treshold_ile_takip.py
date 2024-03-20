@@ -6,6 +6,7 @@ while (video.isOpened()):
     ret, frame = video.read()
     grayFrame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     grayFrame = grayFrame[20:570, 230:770]
+    #grayFrame = cv.medianBlur(grayFrame, 5)
     ret, esiklenmis = cv.threshold(grayFrame, 180, 255,
                                    cv.THRESH_BINARY)
     if ret:

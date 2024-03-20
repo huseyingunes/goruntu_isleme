@@ -6,3 +6,5 @@ cv.imshow("Baslik", resim)
 cv.waitKey(0)
 
 print(resim)
+print(resim.shape)
+print(resim.ndim)

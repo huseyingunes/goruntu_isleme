@@ -8,7 +8,7 @@ while (video.isOpened()):
     grayFrame = grayFrame[20:570, 230:770]
     esiklenmis = cv.adaptiveThreshold(grayFrame, 255,
                                 cv.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                cv.THRESH_BINARY, 17, 9)
+                                cv.THRESH_BINARY, 15, 25)
     if ret:
         cv.imshow("fare takip", esiklenmis)
         if cv.waitKey(33) == 27:

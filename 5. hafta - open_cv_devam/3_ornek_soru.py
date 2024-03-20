@@ -11,6 +11,7 @@ print(dizi.shape)
 print(dizi.ndim)
 print(dizi.dtype)
 print(dizi)
+
 for i in range(0, 255):
     dizi[:, i] = i
 

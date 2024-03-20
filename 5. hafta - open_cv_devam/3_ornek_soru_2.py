@@ -10,6 +10,8 @@ import numpy as np
 
 
 
+
+
 dizi = np.zeros((256, 256, 3), dtype="uint8")
 print(dizi.shape)
 print(dizi.ndim)

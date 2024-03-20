@@ -3,6 +3,8 @@ import cv2
 
 src = cv.imread("resim/bilgisayar.png", cv.IMREAD_UNCHANGED)
 
+print("Seffaf Resim Boyutu :", src.shape)
+
 *_, alpha = cv2.split(src)
 
 gray_layer = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)

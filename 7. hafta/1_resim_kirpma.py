@@ -2,7 +2,7 @@ import cv2 as cv
 
 resim = cv.imread("resim/bugday.jpg")
 
-basak = resim[0:1024, 250:1024]
+basak = resim[0:1024, 750:1024]
 
 cv.imshow("a", basak)
 cv.waitKey(0)

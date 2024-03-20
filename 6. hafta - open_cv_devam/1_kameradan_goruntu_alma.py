@@ -4,7 +4,8 @@ video = cv.VideoCapture(0)
 
 while(video.isOpened()):
     ret, frame = video.read()
+    #frame = frame[:, ::-1]
     if ret:
         cv.imshow("kamera", frame)
-        if cv.waitKey(33) == ord('q'):
+        if cv.waitKey(2) == ord('q'):
             break

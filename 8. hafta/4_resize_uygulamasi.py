@@ -9,6 +9,17 @@ import os
 import glob
 from pathlib import Path
 
+
+
+
+
+
+
+
+
+
+
+
 # İlk olarak ufak klasörünü test klasörü altında oluşturalım
 yol = "resim/test/ufak"
 if not os.path.isdir(yol):

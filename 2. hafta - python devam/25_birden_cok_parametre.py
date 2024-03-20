@@ -4,6 +4,6 @@ def hepsini_topla(*a):
         topla += i
     return topla
 
-toplam = hepsini_topla(1,5,7,9,15,-5,1.5)
+toplam = hepsini_topla(1,5,7,9,15,-5,1.5,100)
 
 print("Toplam : ", toplam)
