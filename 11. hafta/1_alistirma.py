@@ -1,8 +1,22 @@
 '''
-Resim üzerinde fare ile tıklanılan yere yuvarlak, dikdörtgen ya da rastgele boyutlarda elips çizen program.
+Resim üzerinde fare ile tıklanılan yere yuvarlak, dikdörtgen ya da rastgele
+boyutlarda elips çizen program.
 '''
 import cv2 as cv
 from random import *
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 resim = cv.imread("resim/manzara.jpg")
 yukseklik = resim.shape[0]

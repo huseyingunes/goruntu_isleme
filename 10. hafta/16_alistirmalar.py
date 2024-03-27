@@ -20,5 +20,3 @@ while True:
 
         cv.imshow("sonuc", sonuc)
         cv.waitKey(33)
-
-
