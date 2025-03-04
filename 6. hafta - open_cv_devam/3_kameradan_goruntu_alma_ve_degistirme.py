@@ -6,7 +6,7 @@ while(video.isOpened()):
     ret, frame = video.read()
     nisangah = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     #print(nisangah.shape)
-    #print(nisangah[0, 0])
+    #print(nisangah[0, 0])q
     if ret:
         nisangah[239, :] = 0
         nisangah[240, :] = 0

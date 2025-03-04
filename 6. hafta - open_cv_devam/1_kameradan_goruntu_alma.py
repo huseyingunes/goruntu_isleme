@@ -2,6 +2,7 @@ import cv2 as cv
 
 video = cv.VideoCapture(0)
 
+
 while(video.isOpened()):
     ret, frame = video.read()
     #frame = frame[:, ::-1]

@@ -3,14 +3,17 @@ import numpy as np
 
 dizi = np.zeros((512, 512), dtype="uint8")
 
-for i in range(0, 256):
-    dizi[:256, i] = i
-    dizi[:256, -i] = i
-dizi[0:256, 256] = 255
 
-for i in range(256, 512):
-    dizi[256:512, i] = i
-    dizi[256:512, -i] = i
+for i in range(0, 256):
+    dizi[i, :256] = i
+    dizi[-i, :256] = i
+dizi[256, 0:256] = 255
+
+
+for i in range(0, 256):
+    dizi[i, 256:512] = i
+    dizi[-i, 256:512] = i
+dizi[256, 256:512] = 255
 
 cv.imwrite("resim/uretilmis.jpg", dizi)
 

@@ -2,6 +2,7 @@ import cv2 as cv
 
 video = cv.VideoCapture(0)
 
+
 fps = video.get(cv.CAP_PROP_FPS)
 en = video.get(cv.CAP_PROP_FRAME_WIDTH)
 boy = video.get(cv.CAP_PROP_FRAME_HEIGHT)

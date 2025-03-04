@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-dizi = np.zeros((256, 256), dtype="uint8")
+dizi = np.zeros((1024, 1024), dtype="uint8")
 
 for i in range(0, 255):
     dizi[:, i] = i

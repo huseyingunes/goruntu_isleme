@@ -1,6 +1,8 @@
 import cv2 as cv
 import numpy as np
 
+
+
 dizi = np.zeros((256, 256), dtype="uint8")
 
 for i in range(0, 255):

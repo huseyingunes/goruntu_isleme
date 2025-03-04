@@ -4,6 +4,14 @@ Bir satranç tahtası oluşturunuz...
 import cv2 as cv
 import numpy as np
 
+
+
+
+
+
+
+
+
 dizi = np.zeros((800, 800), dtype="uint8")
 
 

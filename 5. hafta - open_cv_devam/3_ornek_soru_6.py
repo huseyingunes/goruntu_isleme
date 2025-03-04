@@ -4,6 +4,8 @@ Tahtanın beyaz karelerinin yukarıdan aşağı aktığını düşününüz.
 Bu beyaz karelerinin yukarıdan random sırayla gelmesini sağlayınız.
 """
 
+
+
 import random
 
 import cv2 as cv

@@ -6,7 +6,7 @@ dizi = np.zeros((256, 256), dtype="uint8")
 for i in range(0, 255):
     dizi[:, i] = i
 
-#cv.imwrite("resim/uretilmis.jpg", dizi)
+cv.imwrite("resim/uretilmis.jpg", dizi)
 #cv.imwrite("resim/uretilmis.bmp", dizi)
 #cv.imwrite("resim/uretilmis.png", dizi)
 

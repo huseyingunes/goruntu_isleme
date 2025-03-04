@@ -1,6 +1,8 @@
 # slat 22 de ki örnek
 import numpy as np
 
+
+
 dizi = np.asarray([(lambda x: range(x, x+6))(x) for x in range(0, 51, 10)])
 
 print(dizi)
