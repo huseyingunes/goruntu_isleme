@@ -4,6 +4,12 @@
 ## resim döndürülürken hiçbir tarafı kırpılmasın.
 #resim sürekli ve saat yönünde döndürülsün.
 
+
+
+
+
+
+
 import cv2 as cv
 
 resim = cv.imread("resim/manzara.jpg")

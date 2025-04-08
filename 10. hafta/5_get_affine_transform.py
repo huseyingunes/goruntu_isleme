@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-resim = cv.imread("resim/manzara.jpg")
+resim = cv.imread("resim/sudoku.jpg")
 
 satir, sutun = resim.shape[:2]
 
