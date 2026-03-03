@@ -1,4 +1,3 @@
-import numpy
 import cv2
 
 resim = cv2.imread("resim/python.png")

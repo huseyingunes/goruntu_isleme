@@ -5,6 +5,13 @@ d = True
 e = 'e'
 degisken = None
 
+t:int = 5
+
+from typing import Optional, Union
+
+x: Union[str, None]
+x: Optional[str]
+
 print(a)
 print(b)
 print(c)

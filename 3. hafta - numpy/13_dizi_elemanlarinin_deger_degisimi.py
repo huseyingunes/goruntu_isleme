@@ -9,6 +9,8 @@ a = 20
 b[1] = 20
 c[1, 0] = 20
 d[1, 0, 2] = 20
+#d[1, 0, 2] = "20"
+#d[1, 0, 2] = "asdfsad"
 print("a dizisinin tek elemanı :", a)
 print("b dizisinin 2. elemanı:", b[1])
 print("c dizisinin 2. elemanının 1. elemanı :", c[1, 0])
