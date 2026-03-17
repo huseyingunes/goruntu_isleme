@@ -1,7 +1,7 @@
 x = "efsane"
 
 def myfunc():
-  #global x
+  global x
   x = "cok iyi"
 
 myfunc()

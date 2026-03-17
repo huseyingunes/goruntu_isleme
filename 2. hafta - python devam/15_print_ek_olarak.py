@@ -1,4 +1,5 @@
-print("bilgisayar")
+a = 5
+print("bilgisayar",a)
 print("mühendisliği")
 a = "sayar"
 b = "mühendisliği"

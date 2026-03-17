@@ -1,5 +1,6 @@
 def fonskiyon_ismi():
-    print("Deneme fonksiyonu")
+    a = 3
+    print("Deneme fonksiyonu {} kere çalışacak".format(a))
 
 fonskiyon_ismi()
 fonskiyon_ismi()

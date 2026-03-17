@@ -1,8 +1,18 @@
 """
-Yukarıdan aşağıya beyazdan siyaha geçişli bir resim oluşturun
+Yukarıdan aşağıya beyazdan siyaha geçişli
+bir resim oluşturun
 """
 
+import numpy as np
+import cv2 as cv
 
+resim = np.zeros((256, 256), dtype='uint8')
+
+for i in range (256):
+    resim[i, :] = [255-i]
+
+cv.imshow("", resim)
+cv.waitKey()
 
 
 
