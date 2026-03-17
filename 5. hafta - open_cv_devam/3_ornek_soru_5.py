@@ -1,6 +1,7 @@
 """
 Bir önceki satranç tahtasına benzer bir tahta oluşturunuz.
-Bu sefer tahtanın her bir beyaz karesine manzara resmini yerleştiriniz.
+Bu sefer tahtanın her bir beyaz karesine manzara resmini
+yerleştiriniz.
 Manzarar resminin rastgele 100*100 lük kısmını kullanınız.
 """
 

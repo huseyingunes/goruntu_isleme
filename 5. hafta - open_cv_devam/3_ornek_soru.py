@@ -13,7 +13,7 @@ print(dizi.dtype)
 print(dizi)
 
 for i in range(0, 255):
-    dizi[:, i] = i
+    dizi[i, :] = i
 
 print(dizi)
 
