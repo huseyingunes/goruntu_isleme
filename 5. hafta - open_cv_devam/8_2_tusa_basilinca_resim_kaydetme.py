@@ -15,6 +15,7 @@ cv.imshow("1", uretilmis_resim)
 
 while(True):
     tus = cv.waitKey(0)
+    print(tus)
     if tus == ord('j'):
         cv.imwrite("resim/uretilmis_tusla.jpg", dizi)
         break

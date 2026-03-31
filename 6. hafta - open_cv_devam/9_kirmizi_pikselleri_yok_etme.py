@@ -10,5 +10,6 @@ for a in resim:
         #print(b)
         b[2] = 0
 
+
 cv.imshow("a", resim)
 cv.waitKey(0)

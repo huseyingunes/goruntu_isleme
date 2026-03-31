@@ -18,7 +18,7 @@ print(dizi.ndim)
 print(dizi.dtype)
 print(dizi)
 for i in range(0, 255):
-    dizi[:, i] = [255-i, 0, i]
+    dizi[:, i] = [255-i, 127, i]
 
 print(dizi)
 

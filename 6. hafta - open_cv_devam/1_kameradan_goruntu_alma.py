@@ -1,6 +1,6 @@
 import cv2 as cv
 
-video = cv.VideoCapture(0)
+video = cv.VideoCapture(1)
 
 
 while(video.isOpened()):

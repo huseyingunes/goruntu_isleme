@@ -11,8 +11,12 @@ def fare_tiklama_olayi(event, x, y, flags, param):
 
     if event == cv.EVENT_LBUTTONUP:
         print("bırakıldı :", x, "-", y)
-        cv.imwrite("resim/kirpilmis_manzara_fare_ile.jpg", resim[bas_y:y, bas_x:x])
-        cv.imshow("Kirpilmis Resim", resim[bas_y:y, bas_x:x])
+        cv.imwrite("resim/kirpilmis_manzara_fare_ile.jpg",
+                   resim[min(bas_y, y):max(bas_y,y),
+                   min(bas_x, x):max(bas_x,x)])
+        cv.imshow("Kirpilmis Resim",
+                  resim[min(bas_y, y):max(bas_y,y),
+                   min(bas_x, x):max(bas_x,x)])
         #cv.waitKey(0)
         #cv.destroyWindow("Kirpilmis Resim")
 

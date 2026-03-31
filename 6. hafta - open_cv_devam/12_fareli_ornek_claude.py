@@ -1,14 +1,13 @@
 """
-1 - Parametre olarak verilen x1,y1 ve x2,y2 değerlerine
-    göre resmi kırpan fonksiyon
-2 - Kameradan gelen görüntüdeki kırmızı rengi siyaha diğer
-    renkleri de beyaza dönüştüren program
-3 - Resmin istenilen bir bölgesini, farklı bir resmin aynı
-    bölgesi ile değiştiren program
-4 - Kameradan alınan görüntüyü görüntünün ortanca değerine
-    göre siyah beyaza dönüştüren program
+kameradan görüntüyü alın
+görüntüdeki kırmızı  yeşil renklerin değerlerini değiştirin.
+görüntüdeki mavi rengin değerini yarı yarıya düşürün
+s tuşuna basılınca kamera görüntüsü dursun
+    kamera görüntüsü durunca kullanıcı fare ile istediği bir bölgeyi seçsin
+        seçilen bölge otomatik olarak numaralandırılarak kaydedilsin
+d tuşuna basınca görüntü tekrar akmaya devam etsin
+esc tuşuna basılınca çıkılsın
 """
-
 import cv2 as cv
 import numpy as np
 import os
@@ -22,7 +21,7 @@ dondurulmus_frame = None
 bolge_sayaci = 1  # Kaydedilen bölge numarası
 
 # Kayıt klasörü
-kayit_klasoru = "secilen_bolgeler"
+kayit_klasoru = "resim"
 os.makedirs(kayit_klasoru, exist_ok=True)
 
 def mouse_callback(event, x, y, flags, param):
