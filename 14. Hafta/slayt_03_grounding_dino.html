@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 — Grounding DINO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#0a0e14;--panel:#111722;--line:#1f2a3a;--fog:#8696ad;--paper:#eef2f7;
+    --scan:#00e0a4;--scan-dim:#0a8f6c;--amber:#ffb340;--grid:rgba(0,224,164,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;
+    display:flex;align-items:center;justify-content:center;min-height:100vh;padding:32px;-webkit-font-smoothing:antialiased;}
+  .slide{width:100%;max-width:1180px;aspect-ratio:16/9;
+    background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/40px 40px,
+      radial-gradient(120% 120% at 85% 10%, #0e1622 0%, var(--ink) 55%);
+    border:1px solid var(--line);border-radius:6px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);}
+  .topbar{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;
+    justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--fog);z-index:5;background:rgba(10,14,20,.6);backdrop-filter:blur(4px);}
+  .topbar .course{color:var(--scan)}
+  .topbar .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--scan);margin-right:8px;box-shadow:0 0 10px var(--scan)}
+  .left{padding:74px 36px 36px 38px;display:flex;flex-direction:column;position:relative;z-index:3;}
+  .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--scan-dim);letter-spacing:.1em;margin-bottom:6px;}
+  .num b{color:var(--scan)}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:52px;line-height:.95;letter-spacing:-.02em;margin-bottom:4px;}
+  .tagline{font-size:14.5px;color:var(--paper);opacity:.85;font-weight:500;margin-bottom:18px;}
+  .desc{font-size:13px;line-height:1.6;color:#c4cedd;margin-bottom:16px;max-width:47ch;}
+  .desc strong{color:var(--scan);font-weight:600}
+  .desc code{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:rgba(0,224,164,.1);padding:1px 5px;border-radius:3px;color:var(--scan)}
+  .uses{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:auto;}
+  .uses li{position:relative;padding-left:22px;font-size:12px;line-height:1.4;color:#aeb9c9;}
+  .uses li::before{content:"";position:absolute;left:0;top:4px;width:9px;height:9px;border:1.5px solid var(--scan);border-radius:2px;}
+  .uses li b{color:var(--paper);font-weight:600}
+  .links{display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--line);padding-top:14px;margin-top:16px;}
+  .link{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fog);text-decoration:none;}
+  .link span{color:var(--scan);min-width:42px}
+  .link b{color:var(--paper);font-weight:500}
+  .right{position:relative;border-left:1px solid var(--line);overflow:hidden;
+    background:radial-gradient(80% 80% at 60% 40%, #16202e 0%, #0b121c 100%);
+    display:flex;align-items:center;justify-content:center;}
+  .sc{width:100%;height:100%;position:absolute;inset:0}
+  .bbox{position:absolute;border:2px solid var(--scan);border-radius:3px;
+    box-shadow:0 0 0 1px rgba(0,0,0,.4) inset;animation:flick 6s ease-in-out infinite;}
+  .bbox::after{content:attr(data-label);position:absolute;top:-19px;left:-2px;background:var(--scan);color:#04130d;
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:2px;white-space:nowrap;letter-spacing:.03em;}
+  .bbox.amber{border-color:var(--amber)}
+  .bbox.amber::after{background:var(--amber);color:#1a1200}
+  @keyframes flick{0%,100%{opacity:.45}50%{opacity:1}}
+  .b1{animation-delay:.2s}
+  .reticle{position:absolute;inset:0;pointer-events:none}
+  .reticle span{position:absolute;width:18px;height:18px;border:2px solid var(--scan);opacity:.5}
+  .reticle .tl{top:18px;left:18px;border-right:0;border-bottom:0}
+  .reticle .tr{top:18px;right:18px;border-left:0;border-bottom:0}
+  .reticle .bl{bottom:40px;left:18px;border-right:0;border-top:0}
+  .reticle .br{bottom:40px;right:18px;border-left:0;border-top:0}
+  .hud{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;letter-spacing:.12em;color:var(--scan);opacity:.7;text-transform:uppercase;white-space:nowrap;text-align:center;}
+  .badge{position:absolute;top:60px;right:22px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+    background:rgba(0,224,164,.12);border:1px solid var(--scan-dim);color:var(--scan);padding:4px 10px;border-radius:3px;text-transform:uppercase;z-index:4;}
+  /* scene-specific helpers */
+  .click-pt{position:absolute;top:42%;left:40%;width:14px;height:14px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 6px rgba(255,179,64,.25);animation:pulse 2s infinite;z-index:3}
+  @keyframes pulse{0%,100%{transform:scale(.8);opacity:.7}50%{transform:scale(1.2);opacity:1}}
+  .termbox{position:absolute;top:42px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;
+    font-size:12px;background:#0c1420;border:1px solid var(--scan-dim);color:var(--scan);padding:7px 14px;border-radius:4px;z-index:4;white-space:nowrap}
+  .match-badge{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;
+    font-size:11px;background:rgba(0,224,164,.15);border:1px solid var(--scan);color:var(--scan);padding:4px 12px;border-radius:4px;z-index:3}
+  .vanish{animation:vanish 5s ease-in-out infinite}
+  @keyframes vanish{0%,40%{opacity:.85}70%,100%{opacity:0}}
+  .window{width:80%;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0c1420;z-index:2}
+  .winbar{background:#16202e;padding:7px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--fog);display:flex;align-items:center;gap:5px}
+  .winbar span{width:9px;height:9px;border-radius:50%;background:#34465a;display:inline-block}
+  .winbar span:first-child{background:#ff6b6b}.winbar span:nth-child(2){background:#ffd166}.winbar span:nth-child(3){background:#06d6a0}
+  .chat{display:flex;flex-direction:column;gap:8px;z-index:3;width:100%}
+  .chat .q{align-self:flex-end;background:#24344a;color:#dfe8f2;font-size:12px;padding:8px 12px;border-radius:12px 12px 2px 12px;max-width:80%}
+  .chat .a{align-self:flex-start;background:rgba(0,224,164,.14);border:1px solid var(--scan-dim);color:var(--scan);
+    font-family:'JetBrains Mono',monospace;font-size:11px;padding:8px 12px;border-radius:12px 12px 12px 2px;max-width:88%}
+  .vlm-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;width:78%;z-index:2}
+  .vlm-img{width:62%}
+  h1.lg{font-size:42px}
+  .diag{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;
+    font-size:12px;background:rgba(255,179,64,.12);border:1px solid var(--amber);color:var(--amber);padding:5px 14px;border-radius:4px;z-index:3;white-space:nowrap}
+  .diag b{color:#fff}
+  @media (prefers-reduced-motion: reduce){.bbox,.click-pt,.vanish{animation:none}.bbox{opacity:.9}}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="topbar">
+      <div><span class="dot"></span>Görüntü İşleme · Güncel Uygulamalar</div>
+      <div class="course">BAUN · Bilgisayar Müh.</div>
+    </div>
+    <div class="left">
+      <div class="num">UYGULAMA <b>03</b> / 24 · AÇIK SÖZCÜK TESPİT</div>
+      <h1>Grounding DINO</h1>
+      <div class="tagline">Metinle nesne bul + SAM ile maskele</div>
+      <p class="desc"><strong>Metin komutuyla</strong> nesne tespiti yapan açık-sözcüklü (open-vocabulary) dedektör. "Kırmızı araba", "baret takmayan işçi" gibi serbest ifadeler yazarsın; modeli yeniden eğitmeden o nesnenin kutusunu bulur. SAM ile birleştirildiğinde (<strong>Grounded-SAM</strong>) metinden doğrudan piksel maskesine geçilir: yaz, bul, kes.</p>
+      <ul class="uses"><li><b>Sıfır-atış tespit:</b> yeni sınıf için veri toplamadan "şunu bul" demek</li><li><b>Otomatik etiketleme:</b> metin komutuyla veri kümesi oluşturma</li><li><b>İçerik denetimi:</b> görselde istenen/istenmeyen nesneyi arama</li><li><b>Robotik kavrama:</b> "masadaki kalemi al" gibi dil tabanlı hedefleme</li></ul>
+      <div class="links"><a class="link" href="https://github.com/IDEA-Research/GroundingDINO"><span>▸ repo</span> <b>github.com/IDEA-Research/GroundingDINO</b></a><a class="link" href="https://github.com/IDEA-Research/Grounded-SAM-2"><span>▸ combo</span> <b>Grounded-SAM-2 (DINO + SAM 2)</b></a></div>
+    </div>
+    <div class="right">
+      <div class="badge">"truck" → box</div>
+      
+      <div class="termbox">$ detect("delivery truck")</div>
+      <div class="bbox b1" data-label="truck 0.91" style="top:34%;left:22%;width:48%;height:40%"></div>
+      <div class="reticle"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+      <div class="hud">▸ open-vocabulary · text → box → SAM mask</div>
+    </div>
+  </div>
+</body>
+</html>
